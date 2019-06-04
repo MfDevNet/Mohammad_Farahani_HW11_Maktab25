@@ -1,18 +1,14 @@
 package animal;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
         Cat cat = new Cat();
-//        cat.setName("ani");
         cat.setBreed(BreedType.Aegean);
-//        System.out.println(cat);
+
         List<Cat> list = new ArrayList<>();
         List<BreedType> arr = Arrays.asList(BreedType.values());
 
@@ -29,19 +25,20 @@ public class Main {
                 .name().startsWith("P"));
 
         List<Cat> listCollectCharAPC = l.collect(Collectors.toList());
+        System.out.println("-------------------------------");
         System.out.println(listCollectCharAPC);
 
         Stream<Cat> l1 = listCollectCharAPC.stream().filter(e ->e.getName().endsWith("2")||e.getName().endsWith("4")
-                ||e.getName().endsWith("6")||e.getName().endsWith("8"));
-        List<Animal> list1=l1.collect(Collectors.toList());
+                ||e.getName().endsWith("6")||e.getName().endsWith("8")||e.getName().endsWith("0"));
+        List<Cat> list1=l1.collect(Collectors.toList());
+        System.out.println("-------------------------------");
         System.out.println(list1);
 
+        List<BreedType> l2 = list1.stream().map(Cat::getBreed).collect(Collectors.toList());
+        System.out.println("-------------------------------");
 
-        //.endsWith("(.)*(\\d){2,4,6,8}")
-
-
-//        System.out.println(list);
-
-
+        for(BreedType b:l2){
+            System.out.println(b);
+        }
     }
 }
