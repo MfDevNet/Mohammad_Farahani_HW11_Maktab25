@@ -25,13 +25,19 @@ public class Main {
 
 
         Stream<Cat> l = list.stream().filter(e -> e.getBreed().name().startsWith("A") || e.getBreed()
-                .name().startsWith("P") || e.getBreed()
-                .name().startsWith("C"));
+                .name().startsWith("C") || e.getBreed()
+                .name().startsWith("P"));
 
         List<Cat> listCollectCharAPC = l.collect(Collectors.toList());
         System.out.println(listCollectCharAPC);
 
+        Stream<Cat> l1 = listCollectCharAPC.stream().filter(e ->e.getName().endsWith("2")||e.getName().endsWith("4")
+                ||e.getName().endsWith("6")||e.getName().endsWith("8"));
+        List<Animal> list1=l1.collect(Collectors.toList());
+        System.out.println(list1);
 
+
+        //.endsWith("(.)*(\\d){2,4,6,8}")
 
 
 //        System.out.println(list);
