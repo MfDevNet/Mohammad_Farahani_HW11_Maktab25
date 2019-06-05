@@ -119,4 +119,13 @@ public class Address {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
+
+    @Override
+    public String toString() {
+        return "city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", postalAddress='" + postalAddress + '\'' +
+                ", postalCode='" + postalCode + '\''+
+                ", phone=" + phoneNumberList;
+    }
 }

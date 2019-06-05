@@ -65,4 +65,10 @@ import javax.persistence.*;
         public void setAddress(Address address) {
             this.address = address;
         }
+
+        @Override
+        public String toString() {
+            return "telNumber='" + telNumber + '\'' +
+                    ", mobNumber='" + mobNumber + '\'';
+        }
     }

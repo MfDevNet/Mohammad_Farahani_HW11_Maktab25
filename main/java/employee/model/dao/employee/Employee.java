@@ -1,6 +1,7 @@
 package employee.model.dao.employee;
 
 import employee.model.dao.address.Address;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -92,6 +93,15 @@ public class Employee {
 
     public void setAddress(List<Address> address) {
         this.addressList = address;
+    }
+
+    @Override
+    public String toString() {
+        return "id=" + id +
+                ", name='" + name + '\'' +
+                ", emCode='" + emCode + '\'' +
+                ", salary=" + salary +
+                ", addressList=" + addressList;
     }
 }
 
