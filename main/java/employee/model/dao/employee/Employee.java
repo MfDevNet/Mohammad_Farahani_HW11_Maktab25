@@ -1,6 +1,6 @@
-package model.dao.employee;
+package employee.model.dao.employee;
 
-import model.dao.address.Address;
+import employee.model.dao.address.Address;
 
 import javax.persistence.*;
 import java.util.ArrayList;

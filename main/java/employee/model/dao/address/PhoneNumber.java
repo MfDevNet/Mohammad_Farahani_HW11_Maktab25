@@ -1,4 +1,4 @@
-package model.dao.address;
+package employee.model.dao.address;
 
 import javax.persistence.*;
 

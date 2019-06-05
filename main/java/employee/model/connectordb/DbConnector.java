@@ -1,4 +1,4 @@
-package model.connectordb;
+package employee.model.connectordb;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
