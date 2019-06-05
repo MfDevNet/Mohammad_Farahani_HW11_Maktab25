@@ -18,12 +18,17 @@ public class Employee {
     private String name;
 
     @Column(name = "emcode")
-    private String  emCode;
+    private String emCode;
 
     @Column(name = "salary")
     private Double salary;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(cascade =CascadeType.ALL,
+//            {CascadeType.MERGE
+//                    , CascadeType.DETACH,
+//                    CascadeType.PERSIST,
+//                    CascadeType.REFRESH},
+            fetch = FetchType.LAZY, mappedBy = "employee")
     private List<Address> addressList;
 
     // construct
@@ -39,9 +44,9 @@ public class Employee {
 
     //setter and getter
 
-    public void addAddressList(Address address){
-        if (addressList == null){
-            addressList=new ArrayList<>();
+    public void addAddressList(Address address) {
+        if (addressList == null) {
+            addressList = new ArrayList<>();
 
         }
         addressList.add(address);

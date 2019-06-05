@@ -17,7 +17,7 @@ import javax.persistence.*;
         private String mobNumber;
 
         @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-        @JoinColumn(name = "address")
+        @JoinColumn(name = "address",unique = true,nullable = false)
         private Address address;
 
         // constructor

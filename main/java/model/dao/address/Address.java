@@ -26,15 +26,21 @@ public class Address {
     @Column(name = "postalcode")
     private String postalCode;
 
-    @Column(name = "phone_number")
-    @OneToMany(mappedBy = "address")
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "address")
     private List<PhoneNumber> phoneNumberList;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee")
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH}
+            , fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id",unique = true,nullable = false)
     private Employee employee;
 
-    // constructor
+// constructor
 
     public Address(String city, String state, String postalAddress, String postalCode) {
         this.city = city;
@@ -47,16 +53,15 @@ public class Address {
     }
 
 
-    // setter and getter
+// setter and getter
 
 
-    public void addPhonenumebrList(PhoneNumber phoneNumber){
-        if (phoneNumberList == null){
-            phoneNumberList=new ArrayList<>();
+    public void addPhonenumebrList(PhoneNumber phoneNumber) {
+        if (phoneNumberList == null) {
+            phoneNumberList = new ArrayList<>();
         }
         phoneNumberList.add(phoneNumber);
     }
-
 
 
     public Long getId() {
