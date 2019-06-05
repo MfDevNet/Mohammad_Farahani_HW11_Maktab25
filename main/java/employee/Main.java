@@ -96,7 +96,7 @@ public class Main {
 //        session.getTransaction().commit();
 
         List<Employee> employees = session.createQuery(
-                "select e.name,max(e.salary) from Employee e join Address a on e.id = a.employee.id group by a.city").list();
+                "select e,a from Employee e join Address a on e.id = a.employee.id where a.postalCode = '3030'").list();
         //select employee.name,max(employee.salary),a.city from employee join
         // address a on employee.id = a.employee_id group by a.city
 

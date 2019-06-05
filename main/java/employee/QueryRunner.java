@@ -28,6 +28,9 @@ public class QueryRunner {
         printListEmp(employeeList);
 
 
+        System.out.println("-----------OutPut Part C ---------------");
+        employeeList = dao.query("select e,a from Employee e join Address a on e.id = a.employee.id where a.postalCode = '3030'");
+        printListEmp(employeeList);
 
     }
 
