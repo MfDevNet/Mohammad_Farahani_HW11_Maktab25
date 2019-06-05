@@ -1,7 +1,9 @@
-import model.connectordb.DbConnector;
-import model.dao.address.Address;
-import model.dao.address.PhoneNumber;
-import model.dao.employee.Employee;
+package employee.model;
+
+import employee.model.connectordb.DbConnector;
+import employee.model.dao.address.Address;
+import employee.model.dao.address.PhoneNumber;
+import employee.model.dao.employee.Employee;
 import org.hibernate.Session;
 
 public class Main {
