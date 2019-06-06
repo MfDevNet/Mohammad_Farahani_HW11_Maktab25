@@ -1,6 +1,9 @@
 package animal;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -9,36 +12,68 @@ public class Main {
         Cat cat = new Cat();
         cat.setBreed(BreedType.Aegean);
 
-        List<Cat> list = new ArrayList<>();
+        List<Cat> listCat = new ArrayList<>();
         List<BreedType> arr = Arrays.asList(BreedType.values());
 
         for (int i = 0; i < 99; i++) {
             cat = new Cat();
             cat.setName("cat" + i);
             cat.setBreed(arr.get(i));
-            list.add(cat);
+            listCat.add(cat);
         }
 
+        List<Cat> list = new ArrayList<>();
+        list = filterByName(listCat);
+        System.out.println("---------------Filter By First Character----------------");
+        printCat(list);
 
-        Stream<Cat> l = list.stream().filter(e -> e.getBreed().name().startsWith("A") || e.getBreed()
+        list = filterByLastEven(list);
+        System.out.println("---------------Filter By Last Character----------------");
+        printCat(list);
+
+        List<BreedType> listBreed=breedList(list);
+        System.out.println("--------------Print and Map Breed Type------------------");
+        printBreed(listBreed);
+
+
+    }
+
+    static void printCat(List<Cat> list) {
+        for (Object o : list) {
+            System.out.println(o);
+        }
+    }
+
+    static void printBreed(List<BreedType> list){
+        for (Object o : list) {
+            System.out.println(o);
+        }
+    }
+
+    static List<Cat> filterByName(List<Cat> catList) {
+        Stream<Cat> l = catList.stream().filter(e -> e.getBreed().name().startsWith("A") || e.getBreed()
                 .name().startsWith("C") || e.getBreed()
                 .name().startsWith("P"));
 
         List<Cat> listCollectCharAPC = l.collect(Collectors.toList());
-        System.out.println("-------------------------------");
-        System.out.println(listCollectCharAPC);
-
-        Stream<Cat> l1 = listCollectCharAPC.stream().filter(e ->e.getName().endsWith("2")||e.getName().endsWith("4")
-                ||e.getName().endsWith("6")||e.getName().endsWith("8")||e.getName().endsWith("0"));
-        List<Cat> list1=l1.collect(Collectors.toList());
-        System.out.println("-------------------------------");
-        System.out.println(list1);
-
-        List<BreedType> l2 = list1.stream().map(Cat::getBreed).collect(Collectors.toList());
-        System.out.println("-------------------------------");
-
-        for(BreedType b:l2){
-            System.out.println(b);
-        }
+        return listCollectCharAPC;
     }
+
+    static List<Cat> filterByLastEven(List<Cat> catList) {
+        Stream<Cat> l1 = catList.stream().filter(e -> e.getName().endsWith("2") || e.getName().endsWith("4")
+                || e.getName().endsWith("6") || e.getName().endsWith("8") || e.getName().endsWith("0"));
+        List<Cat> list = l1.collect(Collectors.toList());
+        return list;
+    }
+
+    static List<BreedType> breedList(List<Cat> list) {
+        List<BreedType> typeList = list.stream().map(Cat::getBreed).collect(Collectors.toList());
+        return typeList;
+
+    }
+
+
 }
+
+
+
