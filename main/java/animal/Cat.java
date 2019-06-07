@@ -16,4 +16,20 @@ public class Cat extends Animal {
         return "Name="+getName()+","+
                 "breed=" + breed +"\n";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cat)) return false;
+
+        Cat cat = (Cat) o;
+if (getBreed()==cat.getBreed() && getName()== cat.getName())return true;return false;
+//        return getBreed() == cat.getBreed();
+
+    }
+
+    @Override
+    public int hashCode() {
+        return getBreed().hashCode();
+    }
 }

@@ -2,7 +2,6 @@ package animal;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -50,23 +49,23 @@ public class Main {
         }
     }
 
-    static List<Cat> filterByName(List<Cat> catList) {
-        Stream<Cat> l = catList.stream().filter(e -> e.getBreed().name().startsWith("A") || e.getBreed()
+    public static List<Cat> filterByName(List<Cat> catList) {
+        Stream<Cat> listAPC = catList.stream().filter(e -> e.getBreed().name().startsWith("A") || e.getBreed()
                 .name().startsWith("C") || e.getBreed()
                 .name().startsWith("P"));
 
-        List<Cat> listCollectCharAPC = l.collect(Collectors.toList());
+        List<Cat> listCollectCharAPC = listAPC.collect(Collectors.toList());
         return listCollectCharAPC;
     }
 
-    static List<Cat> filterByLastEven(List<Cat> catList) {
+    public static List<Cat> filterByLastEven(List<Cat> catList) {
         Stream<Cat> l1 = catList.stream().filter(e -> e.getName().endsWith("2") || e.getName().endsWith("4")
                 || e.getName().endsWith("6") || e.getName().endsWith("8") || e.getName().endsWith("0"));
         List<Cat> list = l1.collect(Collectors.toList());
         return list;
     }
 
-    static List<BreedType> breedList(List<Cat> list) {
+    public static List<BreedType> breedList(List<Cat> list) {
         List<BreedType> typeList = list.stream().map(Cat::getBreed).collect(Collectors.toList());
         return typeList;
 
